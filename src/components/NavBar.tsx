@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import Model from "./Model";
+import TokenList from "./TokenList";
 
 const NavBar = () => {
   const menuItems = [
@@ -21,6 +23,7 @@ const NavBar = () => {
 
   const [openModel, setOpenModel] = useState(false);
   const [openTokenBox, setOpenTokenBox] = useState(false);
+  const [isConnect, setIsConnect] = useState(false);
 
   return (
     <div className="navbar bg-base-100">
@@ -69,9 +72,10 @@ const NavBar = () => {
           className="input input-bordered w-auto ml-1 max-w-xs cursor-text"
         />
       </div>
-      <div className="navbar-end space-x-2">
+      <div className="navbar-end space-x-1">
         <a className="btn">Network</a>
-        <a className="btn">Address</a>
+        <section className="w-44">{!isConnect && <Model />}</section>
+        {isConnect && <TokenList />}
       </div>
     </div>
   );
